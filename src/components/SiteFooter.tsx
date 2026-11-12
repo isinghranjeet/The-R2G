@@ -4,7 +4,6 @@ import {
   ArrowRight,
   ArrowUp,
   Award,
-  BadgeCheck,
   Check,
   Clock,
   Copy,
@@ -93,7 +92,7 @@ export function SiteFooter({ onOpenOtp }: { onOpenOtp: () => void }) {
           "Accreditation: ISO 9001:2015 Certified Design & Prototyping Studio",
           "Programs: SolidWorks (12W), AutoCAD 2D/3D (8W), Siemens NX CAM (12W), CATIA V5 (10W), ANSYS FEA (8W), 3D Printing (6W)",
           "Placement Partners: Maruti Suzuki Vendors, Tata Motors, L&T, Havells, Uno Minda",
-          "Admissions Helpline: +91 9315058665 · admissions@r2glearncad.com",
+          "Admissions Helpline: +91 93150 58665 · admissions@r2glearncad.com",
         ]),
       ],
       { type: "application/pdf" }
@@ -219,7 +218,7 @@ export function SiteFooter({ onOpenOtp }: { onOpenOtp: () => void }) {
                 asChild
               >
                 <a
-                  href={`https://wa.me/919876543210?text=${encodeURIComponent("Hi R2G Learn CAD! I would like to know about upcoming CAD/CAM batches.")}`}
+                  href={`https://wa.me/919315058665?text=${encodeURIComponent("Hi R2G Learn CAD! I would like to know about upcoming CAD/CAM batches.")}`}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -315,12 +314,12 @@ export function SiteFooter({ onOpenOtp }: { onOpenOtp: () => void }) {
             </div>
 
             <div className="flex items-center justify-between">
-              <a href="tel:+919876543210" className="flex items-center gap-2 text-xs hover:text-white">
-                <Phone className="h-4 w-4 shrink-0 text-amber-400" /> +91 98765 43210
+              <a href="tel:+919315058665" className="flex items-center gap-2 text-xs hover:text-white">
+                <Phone className="h-4 w-4 shrink-0 text-amber-400" /> +91 93150 58665
               </a>
               <button
                 type="button"
-                onClick={() => handleCopyText("Phone", "+919876543210")}
+                onClick={() => handleCopyText("Phone", "+919315058665")}
                 className="rounded p-1 text-slate-500 hover:bg-slate-800 hover:text-white"
                 title="Copy phone"
               >
