@@ -93,7 +93,7 @@ export function SiteFooter({ onOpenOtp }: { onOpenOtp: () => void }) {
           "Accreditation: ISO 9001:2015 Certified Design & Prototyping Studio",
           "Programs: SolidWorks (12W), AutoCAD 2D/3D (8W), Siemens NX CAM (12W), CATIA V5 (10W), ANSYS FEA (8W), 3D Printing (6W)",
           "Placement Partners: Maruti Suzuki Vendors, Tata Motors, L&T, Havells, Uno Minda",
-          "Admissions Helpline: +91 98765 43210 · admissions@r2glearncad.com",
+          "Admissions Helpline: +91 9315058665 · admissions@r2glearncad.com",
         ]),
       ],
       { type: "application/pdf" }
