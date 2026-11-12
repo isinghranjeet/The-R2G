@@ -1,0 +1,5 @@
+[
+ {"capability":"code","source":"archive landing page","outcome":"rebuilt with 10 interactive modules","status":"verified","next_action":"none"},
+ {"capability":"schema/records/auth","source":"none detected","outcome":"none needed; demo state is client-side","status":"verified","next_action":"connect backend later if wanted"},
+ {"capability":"assets","source":"r2g-cad-lab.jpg","outcome":"migrated to asset CDN","status":"verified","next_action":"none"}
+]

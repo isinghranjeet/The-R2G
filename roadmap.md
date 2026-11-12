@@ -1,0 +1,3 @@
+- [x] Inspect the uploaded archive and identify its screens, dependencies, and assets.
+- [x] Rebuild the institute homepage with ten interactive, client-side demo modules.
+- [ ] Verify the app preview, key interactions, tests, and final project status.
