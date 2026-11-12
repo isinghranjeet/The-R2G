@@ -25,22 +25,14 @@ import { Button } from "@/components/ui/button";
 import { buildPlainTextPdf, isValidMobile } from "@/lib/r2g-demo-logic";
 import { getStoredCerts } from "@/lib/r2g-storage";
 
-export function SiteFooter({ onOpenOtp }: { onOpenOtp: () => void }) {
-  // Feature 1: Quick Certificate Verifier in Footer
+export function SiteFooter({ onOpenOtp }: { onOpenOtp?: () => void }) {
   const [quickCertId, setQuickCertId] = useState("");
   const [quickCertMatch, setQuickCertMatch] = useState<string | null>(null);
-
-  // Feature 2: Engineering Newsletter Subscription
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
-
-  // Feature 3: Instant Callback Mini-Form
   const [callbackPhone, setCallbackPhone] = useState("");
-
-  // Feature 4: Copy State
   const [copiedField, setCopiedField] = useState<string | null>(null);
 
-  // Feature 5: Live Faridabad Lab Open/Closed Check (9 AM - 7 PM IST)
   const currentHour = new Date().getHours();
   const isLabOpen = currentHour >= 9 && currentHour < 19;
 
@@ -112,7 +104,6 @@ export function SiteFooter({ onOpenOtp }: { onOpenOtp: () => void }) {
 
   return (
     <footer className="site-footer border-t border-slate-800/90 bg-[#060b14] text-slate-300">
-      {/* Top Interactive Utility Strip: Newsletter + Instant Callback */}
       <div className="border-b border-slate-800/80 bg-[#091222]">
         <div className="site-container grid gap-6 py-8 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-6">
@@ -177,10 +168,8 @@ export function SiteFooter({ onOpenOtp }: { onOpenOtp: () => void }) {
         </div>
       </div>
 
-      {/* Main 4-Column Footer Grid */}
       <div className="site-container py-14">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-          {/* Column 1: Brand, ISO Badge & Brochure Download */}
           <div className="space-y-4">
             <Link className="brand-lockup footer-brand" to="/">
               <span className="brand-mark"><Cuboid /></span>
@@ -228,7 +217,6 @@ export function SiteFooter({ onOpenOtp }: { onOpenOtp: () => void }) {
             </div>
           </div>
 
-          {/* Column 2: Explore Platform Pages */}
           <div>
             <h4 className="mb-3.5 text-xs font-semibold tracking-wider text-amber-400 uppercase">
               Explore Platform
@@ -251,7 +239,6 @@ export function SiteFooter({ onOpenOtp }: { onOpenOtp: () => void }) {
             </ul>
           </div>
 
-          {/* Column 3: Instant Credential Verification Widget */}
           <div className="space-y-3">
             <h4 className="mb-3.5 text-xs font-semibold tracking-wider text-amber-400 uppercase">
               Credential Services
@@ -278,20 +265,21 @@ export function SiteFooter({ onOpenOtp }: { onOpenOtp: () => void }) {
               )}
             </form>
 
-            <Button
-              variant="outline"
-              size="sm"
-              className="w-full justify-between border-amber-400/30 bg-amber-400/10 text-xs text-amber-300 hover:bg-amber-400/20"
-              onClick={onOpenOtp}
-            >
-              <span className="flex items-center gap-1.5">
-                <FileCheck2 className="h-3.5 w-3.5" /> Retrieve via Mobile OTP
-              </span>
-              <ArrowRight className="h-3.5 w-3.5" />
-            </Button>
+            {onOpenOtp && (
+              <Button
+                variant="outline"
+                size="sm"
+                className="w-full justify-between border-amber-400/30 bg-amber-400/10 text-xs text-amber-300 hover:bg-amber-400/20"
+                onClick={onOpenOtp}
+              >
+                <span className="flex items-center gap-1.5">
+                  <FileCheck2 className="h-3.5 w-3.5" /> Retrieve via Mobile OTP
+                </span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Button>
+            )}
           </div>
 
-          {/* Column 4: Faridabad Campus Contact & Copy Tools */}
           <div className="space-y-3 text-sm text-slate-400">
             <h4 className="mb-3.5 text-xs font-semibold tracking-wider text-amber-400 uppercase">
               Faridabad Campus
@@ -351,7 +339,6 @@ export function SiteFooter({ onOpenOtp }: { onOpenOtp: () => void }) {
         </div>
       </div>
 
-      {/* Bottom Legal & Back-to-Top Bar */}
       <div className="border-t border-slate-800/80 bg-[#04080f]">
         <div className="site-container flex flex-wrap items-center justify-between gap-4 py-4 text-xs text-slate-500">
           <span>© 2026 R2G Learn CAD · Institute of Design &amp; Drafting</span>
@@ -368,3 +355,5 @@ export function SiteFooter({ onOpenOtp }: { onOpenOtp: () => void }) {
     </footer>
   );
 }
+
+export default SiteFooter;

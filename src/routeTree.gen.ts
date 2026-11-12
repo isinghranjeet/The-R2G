@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as BlogRouteImport } from './routes/blog'
+import { Route as CadSandboxRouteImport } from './routes/cad-sandbox'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CoursesRouteImport } from './routes/courses'
 import { Route as PlacementsRouteImport } from './routes/placements'
@@ -38,6 +39,11 @@ const AdminRoute = AdminRouteImport.update({
 const BlogRoute = BlogRouteImport.update({
   id: '/blog',
   path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CadSandboxRoute = CadSandboxRouteImport.update({
+  id: '/cad-sandbox',
+  path: '/cad-sandbox',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -76,6 +82,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/blog': typeof BlogRoute
+  '/cad-sandbox': typeof CadSandboxRoute
   '/contact': typeof ContactRoute
   '/courses': typeof CoursesRoute
   '/placements': typeof PlacementsRoute
@@ -88,6 +95,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/blog': typeof BlogRoute
+  '/cad-sandbox': typeof CadSandboxRoute
   '/contact': typeof ContactRoute
   '/courses': typeof CoursesRoute
   '/placements': typeof PlacementsRoute
@@ -101,6 +109,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/blog': typeof BlogRoute
+  '/cad-sandbox': typeof CadSandboxRoute
   '/contact': typeof ContactRoute
   '/courses': typeof CoursesRoute
   '/placements': typeof PlacementsRoute
@@ -115,6 +124,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/admin'
     | '/blog'
+    | '/cad-sandbox'
     | '/contact'
     | '/courses'
     | '/placements'
@@ -127,6 +137,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/admin'
     | '/blog'
+    | '/cad-sandbox'
     | '/contact'
     | '/courses'
     | '/placements'
@@ -139,6 +150,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/admin'
     | '/blog'
+    | '/cad-sandbox'
     | '/contact'
     | '/courses'
     | '/placements'
@@ -152,6 +164,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRoute
   BlogRoute: typeof BlogRoute
+  CadSandboxRoute: typeof CadSandboxRoute
   ContactRoute: typeof ContactRoute
   CoursesRoute: typeof CoursesRoute
   PlacementsRoute: typeof PlacementsRoute
@@ -188,6 +201,13 @@ declare module '@tanstack/react-router' {
       path: '/blog'
       fullPath: '/blog'
       preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cad-sandbox': {
+      id: '/cad-sandbox'
+      path: '/cad-sandbox'
+      fullPath: '/cad-sandbox'
+      preLoaderRoute: typeof CadSandboxRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -240,6 +260,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AdminRoute: AdminRoute,
   BlogRoute: BlogRoute,
+  CadSandboxRoute: CadSandboxRoute,
   ContactRoute: ContactRoute,
   CoursesRoute: CoursesRoute,
   PlacementsRoute: PlacementsRoute,

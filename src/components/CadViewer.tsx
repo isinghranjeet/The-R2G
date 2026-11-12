@@ -1,14 +1,11 @@
 import { useEffect, useRef, useState, type PointerEvent } from "react";
 import {
-  Box,
   Cpu,
-  Eye,
   Gauge,
   Layers,
   Minus,
   Play,
   RotateCcw,
-  Sliders,
 } from "lucide-react";
 import * as THREE from "three";
 
@@ -66,10 +63,11 @@ function createSpurGearMesh(
 export default function CadViewer() {
   const canvasRef = useRef<HTMLDivElement>(null);
 
+  // Default opens in Planetary Gear + Mesh (Wireframe) + 18% Exploded View
   const [preset, setPreset] = useState<ModelPreset>("planetary");
-  const [styleMode, setStyleMode] = useState<DisplayStyle>("steel");
+  const [styleMode, setStyleMode] = useState<DisplayStyle>("wireframe");
   const [rotating, setRotating] = useState(true);
-  const [explode, setExplode] = useState(0); // 0 to 100
+  const [explode, setExplode] = useState(18);
   const [rpmSpeed, setRpmSpeed] = useState(1);
   const [zoom, setZoom] = useState(9.2);
   const [rotation, setRotation] = useState<[number, number]>([-0.38, 0.45]);
@@ -239,7 +237,6 @@ export default function CadViewer() {
     discCenterHole.absarc(0, 0, 0.85, 0, Math.PI * 2, true);
     discShape.holes.push(discCenterHole);
 
-    // Cooling drill holes
     for (let r = 1.25; r <= 2.15; r += 0.42) {
       for (let i = 0; i < 16; i++) {
         const a = (i * Math.PI * 2) / 16 + r;
@@ -272,7 +269,6 @@ export default function CadViewer() {
     rotorGroup.visible = false;
     rootGroup.add(rotorGroup);
 
-    // ResizeObserver so canvas never stretches or clips
     const resizeObserver = new ResizeObserver((entries) => {
       for (const entry of entries) {
         const w = Math.max(1, entry.contentRect.width);
@@ -319,7 +315,6 @@ export default function CadViewer() {
 
       camera.position.z = THREE.MathUtils.lerp(camera.position.z, st.zoom, 0.12);
 
-      // Exploded view interpolation
       const exp = st.explode / 100;
       sunGear.position.z = exp * 1.15;
       outerRingMesh.position.z = -exp * 0.95;
@@ -334,7 +329,6 @@ export default function CadViewer() {
       if (st.styleMode === "xray" || st.styleMode === "wireframe" || st.styleMode === "gold") {
         applyMaterialStyle(rootGroup, st.styleMode);
       } else {
-        // Restore default two-tone steel & gold highlights
         rootGroup.traverse((child) => {
           if (child instanceof THREE.Mesh && child.material instanceof THREE.MeshStandardMaterial) {
             child.material.wireframe = false;
@@ -392,7 +386,8 @@ export default function CadViewer() {
       rootGroup.rotation.set(-0.38, 0.45, 0);
       setRotation([-0.38, 0.45]);
       setZoom(9.2);
-      setExplode(0);
+      setExplode(18);
+      setStyleMode("wireframe");
     };
 
     container.addEventListener("pointerdown", onPointerDown as unknown as EventListener);
